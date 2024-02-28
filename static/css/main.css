@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+}
+
+#main-container {
+    display: flex;
+}
+
+#graph-container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#imageContainer {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#formContainer {
+    width: 300px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+#slideContainer {
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#slideTextBox {
+    display: flex;
+    padding: 20px;
+}
+
+.slider-container {
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+img {
+    margin-bottom: 10px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+em {
+    color: gold
+}
