@@ -122,6 +122,7 @@ def signal_generation(g00, f0, f1, dia, Ms, Bs, lam, noise):
     plt.title("Simulation Phantom, \ncolor shows particle concentration")
     plt.xlabel("x [m]") 
     plt.ylabel("y [m]")
+    plt.set_cmap('jet')
     plt.colorbar()
     buf1 = BytesIO()
     plt.savefig(buf1, format="png")
@@ -162,7 +163,9 @@ def signal_generation(g00, f0, f1, dia, Ms, Bs, lam, noise):
     #
     plt.title('FFP Trajectory')
     plt.scatter(FFP[:,0],FFP[:,1],s=2)
-    plt.xlim([xmin,xmax]);plt.ylim([ymin,ymax])
+
+    plt.xlim([xmin,xmax])
+    plt.ylim([ymin,ymax])
     plt.xlabel("x [m]")
     plt.ylabel("y [m]")
     buf3 = BytesIO()
@@ -287,6 +290,7 @@ def signal_generation(g00, f0, f1, dia, Ms, Bs, lam, noise):
     plt.title('Point Spread Function')
     plt.xlabel('x [m]')
     plt.ylabel('y [m]')
+    plt.set_cmap('jet')
 
     buf7 = BytesIO()
     plt.savefig(buf7, format="png")
@@ -312,7 +316,8 @@ def signal_generation(g00, f0, f1, dia, Ms, Bs, lam, noise):
     #  The reconstruction result is a vector that we need to reshape to get a 2D representation
     #
     Rho_hat = np.reshape(Rho_hat,(nx,ny))
-    plt.imshow(Rho_hat.T,extent=extent,cmap='jet');plt.title('Reconstruction')
+    plt.imshow(Rho_hat.T,extent=extent,cmap='jet')
+    plt.title('Reconstruction')
     plt.xlabel('x [m]')
     plt.ylabel('y [m]')
     
@@ -541,7 +546,8 @@ def lambda_dependent_graphs(g00, f0, f1, dia, Ms, Bs, lam, noise):
     #  The reconstruction result is a vector that we need to reshape to get a 2D representation
     #
     Rho_hat = np.reshape(Rho_hat,(nx,ny))
-    plt.imshow(Rho_hat.T,extent=extent,cmap='jet');plt.title('Reconstruction')
+    plt.imshow(Rho_hat.T,extent=extent,cmap='jet')
+    plt.title('Reconstruction')
     plt.xlabel('x [m]')
     plt.ylabel('y [m]')
 

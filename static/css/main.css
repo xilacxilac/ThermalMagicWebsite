@@ -10,7 +10,6 @@ body {
 
 #graph-container {
     flex: 1;
-    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -22,6 +21,7 @@ body {
 }
 
 #formContainer {
+    max-height: calc(100vh - 150px);
     width: 300px;
     padding: 20px;
     box-sizing: border-box;
@@ -70,8 +70,22 @@ img {
     text-align: center;
 }
 
+.glossary {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
 h1 {
     color: #333;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
 }
 
 p {
@@ -95,4 +109,12 @@ button:hover {
 
 em {
     color: gold
+}
+
+input[type="range"] {
+    width: 125px;
+}
+
+input[type="number"] {
+    width: 75px;
 }

@@ -11,41 +11,61 @@
     </div>
     <div id="main-container">
         <div id="graph-container">
-            <div id="imageContainer">
+            <div id="imageContainer" style="display: none;">
                 <!-- Graph images will be added here dynamically -->
             </div>
+
+            <div class="glossary">
+                <h2>Glossary</h2>
+                <p>
+                    Gradient Field in the X-Direction (g<sub>00</sub>) in T/m <br>
+                    f<sub>0</sub> <br>
+                    f<sub>1</sub> <br>
+                    Particle diameter (d) in nm <br>
+                    Saturation magnetization (<sub>s</sub>) in A/m <br>
+                    Coil sensitivity (B<sub>s</sub>) in T/A <br>
+                    Regularization constant (λ) in 10^λ
+                </p>
+            </div>
         </div>
+        
         <div id="formContainer">
             <form id="plotForm">
                 <div class="slider-container">
-                    <label class="slider-label" for="g00">Select the value of g<sub>00</sub>:</label>
+                    <label class="slider-label" for="g00" title="POOP">Select the value of g<sub>00</sub>:</label>
                     <input name="g00" type="range" value="8" min="2" max="20" step="1" oninput="this.nextElementSibling.value = this.value">
                     <input name="g00" type="number" value="8" min="2" max="20" step="1" oninput="this.previousElementSibling.value = this.value" required>
+                    <text>T/m</text>
                 </div>
                 <div class="slider-container">
                     <label class="slider-label" for="f0">Select the value of f<sub>0</sub>:</label>
                     <input name="f0" type="range" value="25500" min="0" max="30000" step="50" oninput="this.nextElementSibling.value = this.value">
                     <input name="f0" type="number" value="25500" min="0" max="30000" step="50" oninput="this.previousElementSibling.value = this.value" required>
+                    <text>Hz</text>
                 </div>
                 <div class="slider-container">
                     <label class="slider-label" for="f1">Select the value of f<sub>1</sub>:</label>
                     <input name="f1" type="range" value="25250" min="0" max="30000" step="50" oninput="this.nextElementSibling.value = this.value">
                     <input name="f1" type="number" value="25250" min="0" max="30000" step="50" oninput="this.previousElementSibling.value = this.value" required>
+                    <text>Hz</text>
                 </div>
                 <div class="slider-container">
                     <label class="slider-label" for="d">Select the value of d:</label>
                     <input name="d" type="range" value="20" min="10" max="30" step="1" oninput="this.nextElementSibling.value = this.value">
                     <input name="d" type="number" value="20" min="10" max="30" step="1" oninput="this.previousElementSibling.value = this.value" required>
+                    <text>nm</text>
                 </div>
                 <div class="slider-container">
                     <label class="slider-label" for="Ms">Select the value of M<sub>s</sub>:</label>
                     <input name="Ms" type="range" value="450000" min="0" max="700000" step="10000" oninput="this.nextElementSibling.value = this.value">
                     <input name="Ms" type="number" value="450000" min="0" max="700000" step="10000" oninput="this.previousElementSibling.value = this.value" required>
+                    <text>A/m</text>
                 </div>
                 <div class="slider-container">
                     <label class="slider-label" for="Bs">Select the value of B<sub>s</sub>:</label>
-                    <input name="Bs" type="range" value="0.000837758" min="0" max="0.001" step="0.000000001" oninput="this.nextElementSibling.value = this.value">
-                    <input name="Bs" type="number" value="0.000837758" min="0" max="0.001" step="0.000000001" oninput="this.previousElementSibling.value = this.value" required>
+                    <input name="Bs" type="range" value="0.0008" min="0" max="0.001" step="0.0001" oninput="this.nextElementSibling.value = this.value">
+                    <input name="Bs" type="number" value="0.0008" min="0" max="0.001" step="0.0001" oninput="this.previousElementSibling.value = this.value" required>
+                    <text>T/A</text>
                 </div>
                 <div class="slider-container">
                     <label class="slider-label" for="lam_exp">Select the exponent of λ:</label>
@@ -53,7 +73,7 @@
                     <input name="lam_exp" type="number" value="-6" min="-9" max="-4" step="0.5" oninput="this.previousElementSibling.value = this.value" required>
                 </div>
                 <div class="slider-container">
-                    <label class="slider-label" for="noise">Select the noise:</label>
+                    <label class="slider-label" for="noise">Select the noise strength:</label>
                     <input name="noise" type="range" value="0.001" min="0.001" max="0.01" step="0.001" oninput="this.nextElementSibling.value = this.value">
                     <input name="noise" type="number" value="0.001" min="0.001" max="0.01" step="0.001" oninput="this.previousElementSibling.value = this.value" required>
                 </div>
@@ -80,7 +100,7 @@
                     success: function (data) {
                         // Enable the button, reset its text, and revert color on success
                         $('#plotButton').prop('disabled', false).html('Plot Graph').css('background-color', '');
-                        $('#imageContainer').html(data);
+                        $('#imageContainer').html(data).show();
                     },
                     error: function (xhr, status, error) {
                         console.error('Error:', error);
