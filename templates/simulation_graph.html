@@ -7,7 +7,7 @@
 
 {% block body %}
     <div id="phase1" class="phase">
-        <h2>Temporary Title</h2>
+        <h2>Generated Raw Data</h2>
         <div id="slideContainer">
             <img src='data:image/png;base64,{{ data1 }}' width='300' height='250'/>
             <img src='data:image/png;base64,{{ data5 }}' width='300' height='250'/>
@@ -44,12 +44,12 @@
             <img src='data:image/png;base64,{{ data2 }}' width='300' height='250'/>
         </div>
 
-        <button id="nextPhase">Next</button>
+        <button id="next" onclick="showPhase(0, 1)">Next (Reconstruction)</button>
 
     </div>
 
     <div id="phase2" class="phase" style="display: none;">
-        <h2>Reconstruction</h2>
+        <h2>Reconstructed Image</h2>
         <div id="slideContainer">
             <img src='data:image/png;base64,{{ data6 }}' width='264' height='220'/>
             <img src='data:image/png;base64,{{ data7 }}' width='264' height='220'/>
@@ -83,8 +83,15 @@
             <img src='data:image/png;base64,{{ data9 }}' width='264' height='220'/>
             <img src='data:image/png;base64,{{ data10 }}' width='264' height='220'/>
             <img src='data:image/png;base64,{{ data8 }}' width='264' height='220'/>
+
         </div>
 
+        <button onclick="showPhase(1, 0)">Previous</button>
+        <button id="next" onclick="showPhase(1, 2)">Next (References)</button>
+    </div>
+
+    <div id="phase3" class="phase" style="display: none;">
+        <h2>References</h2>
         <div id="slideContainer">
             <div id="slideTextBox">
                 <ul>
@@ -128,32 +135,16 @@
             </div>
         </div>
 
-        <button id="previousPhase">Previous</button>
+        <button onclick="showPhase(2, 1)">Previous</button>
     </div>
 
     <script>
-        document.getElementById('nextPhase').addEventListener('click', function() {
-            nextPhase();
-        });
-
-        document.getElementById('previousPhase').addEventListener('click', function() {
-            previousPhase();
-        });
-
-        function nextPhase() {
-            var phase1 = document.getElementById('phase1');
-            var phase2 = document.getElementById('phase2');
-
-            phase1.style.display = 'none';
-            phase2.style.display = 'block';
-        }
-
-        function previousPhase() {
-            var phase1 = document.getElementById('phase1');
-            var phase2 = document.getElementById('phase2');
-
-            phase1.style.display = 'block';
-            phase2.style.display = 'none';
+        var phases = document.getElementsByClassName('phase');
+            
+        function showPhase(hideIndex, showIndex) {
+            phases[hideIndex].style.display = 'none';
+            phases[showIndex].style.display = 'block';
         }
     </script>
+    
 {% endblock %}

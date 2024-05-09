@@ -248,7 +248,24 @@ def signal_generation(g00, f0, f1, dia, Ms, Bs, lam, noise):
             for k in range(nz):
                 RhoCal[i,j,k,1] = 295
                 RhoCal[i,j,k,2] = dia*10**(-9)
-                
+
+    # Tsym = np.zeros((nt*2,nx*ny)); kindx1 = 0
+    # nxhalf = int(np.ceil(nx/2))
+    # for i in range(nxhalf):
+    #     for j in range(ny):
+    #         RhoCal[i,j,:,0] = numpart
+    #         for k in range(nt):
+    #             tmp = mp.Signal(t[k],RhoCal,Rhodim,FFPtrajfun,MsTfun,MvHfun,MvHfunDer,Bsfun,G)
+    #             Tsym[k,kindx1] = tmp[0]
+    #             Tsym[k,nx*ny-kindx1-1] = -tmp[0]
+    #             Tsym[k+nt,kindx1] = tmp[1]
+    #             Tsym[k+nt,nx*ny-kindx1-1] = -tmp[1]
+    #         RhoCal[i,j,:,0] = 0
+    #         kindx1 = kindx1 + 1
+    #         print(kindx1)
+    # Tnew = Tsym
+    # print('Shape of T: {0}'.format(Tnew.shape))   
+
     Tnew = np.zeros((nt*2,nx*ny)); kindx1 = 0
     for i in range(nx):
         for j in range(ny):

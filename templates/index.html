@@ -5,36 +5,64 @@
 {% endblock %}
 
 {% block body %}
+    <nav class="navbar-container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Thermal Magic</a>
+        </div>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/simulation" class="nav-link">Simulation</a></li>
+        </ul>
+    </nav>
+    
     <div class="container">
-        <h1>Welcome to Thermal Magic</h1>
-        <p>Explore and visualize MPI with our simulation tool.</p>
+        <h2>Welcome to Thermal Magic</h2>
         
-        <form action="{{ url_for('simulation') }}" method="get">
-            <button type="submit">Go to Simulation</button>
-        </form>
+        <div class="phase" id="phase1">
+            <p> 
+                Magnetic Particle Imaging (MPI) is a novel technique for remotely detecting magnetic nanoparticle (MNP) tracers, with several
+                applications in biomedical imaging and diagnosis, as well as materials research. MPI relies on the non-linear magnetization
+                response of MNPs when exposed to time-varying magnetic fields. Special arrangements of magnets or electromagnets allow
+                selectively saturating the particles' magnetization over time in such a way that the distribution of MNPs can be measured as a
+                function of space, through the generation of a moving field-free point (FFP) which saturate all particles but the ones near the
+                no-field region.
+            </p>
+    
+            <button id="next" onclick="showPhase(0, 1)">Next</button>
+        </div>
+    
+        <div class="phase" id="phase2" style="display: none;">
+            <p> 
+                However, the time signal of the varying magnetic response alone is not enough to acquire information about the spatial
+                distribution of the MNPs. Obtaining this information requires two additional steps, in which we first relate the time signal to its
+                corresponding spatial position to get an image, and then deblur this image based on the knowledge of the experimental setup,
+                and its point spread function (PSF). This process in mathematical terms is also know as solving an inverse problem and amounts
+                to carefully balancing between a good fit to the observed data and a realistic reconstruction.
+            </p>
+    
+            <button id="prev" onclick="showPhase(1, 0)">Previous</button>
+            <button id="next" onclick="showPhase(1, 2)">Next</button>
+        </div>
+    
+        <div class="phase" id="phase3" style="display: none;">
+            <p> This web application intends to give the user a tool to see for themselves how different experimental setups can influence the
+                quality and reliability of Magnetic Particle Imaging and can help to illustrate the challenges researchers at NIST face when trying
+                to improve this novel measurement technology.
+            </p>
+            
+            <button id="prev" onclick="showPhase(2, 1)">Previous</button>
+            <form action="{{ url_for('simulation') }}" method="get" id="next">
+                <button type="submit">Explore MPI with our simulation tool</button>
+            </form>
+        </div>
     </div>
 
-    <div class="container">
-        <p> 
-            Magnetic Particle Imaging (MPI) is a novel technique for remotely detecting magnetic nanoparticle (MNP) tracers, with several
-            applications in biomedical imaging and diagnosis, as well as materials research. MPI relies on the non-linear magnetization
-            response of MNPs when exposed to time-varying magnetic fields. Special arrangements of magnets or electromagnets allow
-            selectively saturating the particles' magnetization over time in such a way that the distribution of MNPs can be measured as a
-            function of space, through the generation of a moving field-free point (FFP) which saturate all particles but the ones near the
-            no-field region.
-        </p>
-
-        <p> 
-            However, the time signal of the varying magnetic response alone is not enough to acquire information about the spatial
-            distribution of the MNPs. Obtaining this information requires two additional steps, in which we first relate the time signal to its
-            corresponding spatial position to get an image, and then deblur this image based on the knowledge of the experimental setup,
-            and its point spread function (PSF). This process in mathematical terms is also know as solving an inverse problem and amounts
-            to carefully balancing between a good fit to the observed data and a realistic reconstruction.
-        </p>
-
-        <p> This web application intends to give the user a tool to see for themselves how different experimental setups can influence the
-            quality and reliability of Magnetic Particle Imaging and can help to illustrate the challenges researchers at NIST face when trying
-            to improve this novel measurement technology.
-        </p>
-    </div>
+    <script>
+        var phases = document.getElementsByClassName('phase');
+            
+        function showPhase(hideIndex, showIndex) {
+            phases[hideIndex].style.display = 'none';
+            phases[showIndex].style.display = 'block';
+        }
+    </script>
 {% endblock %}

@@ -6,79 +6,77 @@
 {% endblock %}
 
 {% block body %}
+    <nav class="navbar-container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Thermal Magic</a>
+        </div>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/simulation" class="nav-link">Simulation</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
         <h1>Simulation</h1>
     </div>
+    
     <div id="main-container">
         <div id="graph-container">
             <div id="imageContainer" style="display: none;">
                 <!-- Graph images will be added here dynamically -->
-            </div>
-
-            <div class="glossary">
-                <h2>Glossary</h2>
-                <p>
-                    Gradient Field in the X-Direction (g<sub>00</sub>) in T/m <br>
-                    f<sub>0</sub> <br>
-                    f<sub>1</sub> <br>
-                    Particle diameter (d) in nm <br>
-                    Saturation magnetization (<sub>s</sub>) in A/m <br>
-                    Coil sensitivity (B<sub>s</sub>) in T/A <br>
-                    Regularization constant (λ) in 10^λ
-                </p>
             </div>
         </div>
         
         <div id="formContainer">
             <form id="plotForm">
                 <div class="slider-container">
-                    <label class="slider-label" for="g00" title="POOP">Select the value of g<sub>00</sub>:</label>
+                    <label class="slider-label" for="g00" title="Gradient field in x-direction">Select the value of g<sub>00</sub>:</label>
                     <input name="g00" type="range" value="8" min="2" max="20" step="1" oninput="this.nextElementSibling.value = this.value">
                     <input name="g00" type="number" value="8" min="2" max="20" step="1" oninput="this.previousElementSibling.value = this.value" required>
                     <text>T/m</text>
                 </div>
                 <div class="slider-container">
-                    <label class="slider-label" for="f0">Select the value of f<sub>0</sub>:</label>
+                    <label class="slider-label" for="f0" title="Drive coil frequency x-direction">Select the value of f<sub>0</sub>:</label>
                     <input name="f0" type="range" value="25500" min="0" max="30000" step="50" oninput="this.nextElementSibling.value = this.value">
                     <input name="f0" type="number" value="25500" min="0" max="30000" step="50" oninput="this.previousElementSibling.value = this.value" required>
                     <text>Hz</text>
                 </div>
                 <div class="slider-container">
-                    <label class="slider-label" for="f1">Select the value of f<sub>1</sub>:</label>
+                    <label class="slider-label" for="f1" title="Drive coil frequency y-direction">Select the value of f<sub>1</sub>:</label>
                     <input name="f1" type="range" value="25250" min="0" max="30000" step="50" oninput="this.nextElementSibling.value = this.value">
                     <input name="f1" type="number" value="25250" min="0" max="30000" step="50" oninput="this.previousElementSibling.value = this.value" required>
                     <text>Hz</text>
                 </div>
                 <div class="slider-container">
-                    <label class="slider-label" for="d">Select the value of d:</label>
+                    <label class="slider-label" for="d" title="Particle diameter">Select the value of d:</label>
                     <input name="d" type="range" value="20" min="10" max="30" step="1" oninput="this.nextElementSibling.value = this.value">
                     <input name="d" type="number" value="20" min="10" max="30" step="1" oninput="this.previousElementSibling.value = this.value" required>
                     <text>nm</text>
                 </div>
                 <div class="slider-container">
-                    <label class="slider-label" for="Ms">Select the value of M<sub>s</sub>:</label>
+                    <label class="slider-label" for="Ms" title="Saturation magnetization">Select the value of M<sub>s</sub>:</label>
                     <input name="Ms" type="range" value="450000" min="0" max="700000" step="10000" oninput="this.nextElementSibling.value = this.value">
                     <input name="Ms" type="number" value="450000" min="0" max="700000" step="10000" oninput="this.previousElementSibling.value = this.value" required>
                     <text>A/m</text>
                 </div>
                 <div class="slider-container">
-                    <label class="slider-label" for="Bs">Select the value of B<sub>s</sub>:</label>
+                    <label class="slider-label" for="Bs" title="Coil sensitivity">Select the value of B<sub>s</sub>:</label>
                     <input name="Bs" type="range" value="0.0008" min="0" max="0.001" step="0.0001" oninput="this.nextElementSibling.value = this.value">
                     <input name="Bs" type="number" value="0.0008" min="0" max="0.001" step="0.0001" oninput="this.previousElementSibling.value = this.value" required>
                     <text>T/A</text>
                 </div>
                 <div class="slider-container">
-                    <label class="slider-label" for="lam_exp">Select the exponent of λ:</label>
+                    <label class="slider-label" for="lam_exp" title="Regularization constant">Select the exponent of λ:</label>
                     <input name="lam_exp" type="range" value="-6" min="-9" max="-4" step="0.5" oninput="this.nextElementSibling.value = this.value">
                     <input name="lam_exp" type="number" value="-6" min="-9" max="-4" step="0.5" oninput="this.previousElementSibling.value = this.value" required>
                 </div>
                 <div class="slider-container">
-                    <label class="slider-label" for="noise">Select the noise strength:</label>
-                    <input name="noise" type="range" value="0.001" min="0.001" max="0.01" step="0.001" oninput="this.nextElementSibling.value = this.value">
-                    <input name="noise" type="number" value="0.001" min="0.001" max="0.01" step="0.001" oninput="this.previousElementSibling.value = this.value" required>
+                    <label class="slider-label" for="noise">Select the noise level:</label>
+                    <input name="noise" type="range" value="0.001" min="0.001" max="0.05" step="0.001" oninput="this.nextElementSibling.value = this.value">
+                    <input name="noise" type="number" value="0.001" min="0.001" max="0.05" step="0.001" oninput="this.previousElementSibling.value = this.value" required>
                 </div>
                     
-                <button id="plotButton" type="submit">Plot Graph</button>
+                <button id="plotButton" type="submit">Run Code!</button>
             </form>
         </div>
     </div>
@@ -99,13 +97,13 @@
                     data: $('#plotForm').serialize(),
                     success: function (data) {
                         // Enable the button, reset its text, and revert color on success
-                        $('#plotButton').prop('disabled', false).html('Plot Graph').css('background-color', '');
+                        $('#plotButton').prop('disabled', false).html('Run Again!').css('background-color', '');
                         $('#imageContainer').html(data).show();
                     },
                     error: function (xhr, status, error) {
                         console.error('Error:', error);
                         // Enable the button, reset its text, and revert color on error
-                        $('#plotButton').prop('disabled', false).html('Plot Graph').css('background-color', '');
+                        $('#plotButton').prop('disabled', false).html('Run Code!').css('background-color', '');
                     }
                 });
             });
