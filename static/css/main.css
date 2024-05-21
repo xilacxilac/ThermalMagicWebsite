@@ -72,15 +72,6 @@ img {
     overflow: auto;
 }
 
-.glossary {
-    max-width: 800px;
-    margin: 0 auto 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
 #next {
     float: right
 }
@@ -171,4 +162,56 @@ input[type="number"] {
 
 .nav-link:hover {
     background-color: #555;
+}
+
+.phase {
+    position: relative;
+    padding-bottom: 60px;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+.button-container-one {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    justify-content: right;
+    padding: 0 20px;
+}
+
+.button-container-one button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button-container-one button:hover {
+    background-color: #0056b3;
 }

@@ -4,7 +4,7 @@
 from flask import Flask, render_template, request
 import plots as plots
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='')
 
 g00 = None
 f0 = None
