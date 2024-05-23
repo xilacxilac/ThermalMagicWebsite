@@ -22,7 +22,6 @@ body {
 }
 
 #formContainer {
-    max-height: calc(100vh - 150px);
     width: 300px;
     padding: 20px;
     box-sizing: border-box;
