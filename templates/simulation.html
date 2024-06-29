@@ -23,6 +23,21 @@
     
     <div id="main-container">
         <div id="graph-container">
+            <div id="helperContainer" style="display: block;">
+                <div id="slideTextBox">
+                    <text>
+                        On this screen, you can choose the parameters that are used in the simulation and
+                        reconstruction. These involve the parameters that characterize the MNPs; their
+                        diameter <em>d</em> and saturation magnetization <em>M<sub>s</sub></em>. Furthermore, 
+                        it is possible to change the experimental parameters, such as the strength of the 
+                        gradient field <em>g<sub>00</sub></em>, the drive field frequencies 
+                        <em>f<sub>0</sub></em> and <em>f<sub>1</sub></em>, and the receive coil sensitivity 
+                        <em>B<sub>s</sub></em>. Finally, the parameters that directly influence the quality 
+                        of the reconstruction, the noise level <em>κ</em>, and the exponent of the
+                        regularization parameter <em>λ</em> can be changed.
+                    </text>
+                </div>  
+            </div>
             <div id="imageContainer" style="display: none;">
                 <!-- Graph images will be added here dynamically -->
             </div>
@@ -100,6 +115,7 @@
                         // Enable the button, reset its text, and revert color on success
                         $('#plotButton').prop('disabled', false).html('Run Again!').css('background-color', '');
                         $('#imageContainer').html(data).show();
+                        $('#helperContainer').html(data).hide();
                     },
                     error: function (xhr, status, error) {
                         console.error('Error:', error);
