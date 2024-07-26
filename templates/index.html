@@ -19,7 +19,7 @@
     <div class="container">
         <h2>Welcome to MP-You Simulator</h2>
         
-        <div class="phase" id="phase1">
+        <div class="home-phase" id="home-phase1">
             <div id="slideContainer">
                 <p> 
                     Magnetic Particle Imaging (MPI) is a novel technique for remotely detecting magnetic nanoparticle (MNP) tracers, with several
@@ -33,11 +33,11 @@
 
             <img src="{{ url_for('static', filename='public/slide1.jpg') }}" height="150px" width="auto"/>
             <div class="button-container-one">
-                <button id="next" onclick="showPhase(0, 1)">Next</button>
+                <button id="next" onclick="showHomePhase(0, 1)">Next</button>
             </div>
         </div>
     
-        <div class="phase" id="phase2" style="display: none;">
+        <div class="home-phase" id="home-phase2" style="display: none;">
             <div id="slideContainer">
                 <p> 
                     However, the time signal of the varying magnetic response alone is not enough to deduce the spatial
@@ -50,12 +50,12 @@
             
             <img src="{{ url_for('static', filename='public/slide2.png') }}"/>
             <div class="button-container">
-                <button id="prev" onclick="showPhase(1, 0)">Previous</button>
-                <button id="next" onclick="showPhase(1, 2)">Next</button>
+                <button id="prev" onclick="showHomePhase(1, 0)">Previous</button>
+                <button id="next" onclick="showHomePhase(1, 2)">Next</button>
             </div>
         </div>
     
-        <div class="phase" id="phase3" style="display: none;">
+        <div class="home-phase" id="home-phase3" style="display: none;">
             <div id="slideContainer">
                 <p>
                     This web application intends to give the user a tool to see for themselves how different experimental setups can influence the
@@ -66,7 +66,7 @@
             
             <img src="{{ url_for('static', filename='public/slide3.jpg') }}" height="150px" width="auto"/>
             <div class="button-container">
-                <button id="prev" onclick="showPhase(2, 1)">Previous</button>
+                <button id="prev" onclick="showHomePhase(2, 1)">Previous</button>
                 <form action="{{ url_for('simulation') }}" method="get" id="next">
                     <button type="submit">Explore MPI with our simulation tool</button>
                 </form>
@@ -75,11 +75,12 @@
     </div>
 
     <script>
-        var phases = document.getElementsByClassName('phase');
-            
-        function showPhase(hideIndex, showIndex) {
-            phases[hideIndex].style.display = 'none';
-            phases[showIndex].style.display = 'block';
+        var home_phases = document.getElementsByClassName('home-phase');
+        console.log(home_phases)    
+
+        function showHomePhase(hideIndex, showIndex) {
+            home_phases[hideIndex].style.display = 'none';
+            home_phases[showIndex].style.display = 'block';
         }
     </script>
 {% endblock %}

@@ -6,144 +6,147 @@
 {% endblock %}
 
 {% block body %}
-    <div id="phase1" class="phase">
-        <h2>Generated Raw Data</h2>
-        <div id="slideContainer">
-            <img src='data:image/png;base64,{{ data1 }}' width='300' height='250'/>
-            <img src='data:image/png;base64,{{ data5 }}' width='300' height='250'/>
+    <div id="phase-container">
+        <div id="phase1" class="phase">
+            <h2>Generated Raw Data</h2>
+            <div id="slideContainer">
+                <img src='data:image/png;base64,{{ data1 }}' width='300' height='250'/>
+                <img src='data:image/png;base64,{{ data5 }}' width='300' height='250'/>
 
-            <div id="slideTextBox">
-                <text>
-                    Magnetic particle imaging (MPI) utilizes the non-linear
-                    response of magnetic nanoparticle tracers to a time-varying
-                    magnetic field. The resulting image resolution
-                    depends on one hand on the particles' properties such as
-                    diameter <em>d</em> and saturation magnetization <em>M<sub>s</sub></em>, and on the
-                    other hand on the experimental conditions such as
-                    gradient field strength <em>G</em> and drive field amplitude <em>B<sub>0</sub></em>.
-                </text>
-            </div>  
-        </div>
-
-        <div id="slideContainer">
-            <div id="slideTextBox">
-                <text>
-                    The area of interest is scanned by applying two
-                    perpendicular magnetic fields that vary with
-                    slightly different frequencies <em>f<sub>0</sub></em> and <em>f<sub>1</sub></em>. These in
-                    combination with the gradient field create a
-                    field-free-point (FFP) that is moving through
-                    the field-of-view (FOV) in a so-called Lissajous
-                    trajectory. We measure the signal as a function
-                    of time picked up by two perpendicular receive
-                    coils.  
-                </text>
+                <div id="slideTextBox">
+                    <text>
+                        Magnetic particle imaging (MPI) utilizes the non-linear
+                        response of magnetic nanoparticle tracers to a time-varying
+                        magnetic field. The resulting image resolution
+                        depends on one hand on the particles' properties such as
+                        diameter <em>d</em> and saturation magnetization <em>M<sub>s</sub></em>, and on the
+                        other hand on the experimental conditions such as
+                        gradient field strength <em>G</em> and drive field amplitude <em>B<sub>0</sub></em>.
+                    </text>
+                </div>  
             </div>
 
-            <img src='data:image/png;base64,{{ data3 }}' width='300' height='250'/>
-            <img src='data:image/png;base64,{{ data2 }}' width='300' height='250'/>
-        </div>
+            <div id="slideContainer">
+                <div id="slideTextBox">
+                    <text>
+                        The area of interest is scanned by applying two
+                        perpendicular magnetic fields that vary with
+                        slightly different frequencies <em>f<sub>0</sub></em> and <em>f<sub>1</sub></em>. These in
+                        combination with the gradient field create a
+                        field-free-point (FFP) that is moving through
+                        the field-of-view (FOV) in a so-called Lissajous
+                        trajectory. We measure the signal as a function
+                        of time picked up by two perpendicular receive
+                        coils.  
+                    </text>
+                </div>
 
-        <button id="next" onclick="showPhase(0, 1)">Next (Reconstruction)</button>
-
-    </div>
-
-    <div id="phase2" class="phase" style="display: none;">
-        <h2>Reconstructed Image</h2>
-        <div id="slideContainer">
-            <img src='data:image/png;base64,{{ data6 }}' width='264' height='220'/>
-            <img src='data:image/png;base64,{{ data7 }}' width='264' height='220'/>
-
-            <div id="slideTextBox">
-                <text>
-                    The first step in the reconstruction consists of correlating
-                    the time signal with the corresponding spatial position of
-                    the FFP by collecting all the data for which the FFP positions
-                    fall within a specific pixel's boundaries. The resulting image
-                    can be understood as a convolution of the point spread
-                    function (PSF) with the original particle distribution.
-                </text>
-            </div>  
-        </div>
-
-        <div id="slideContainer">
-            <div id="slideTextBox">
-                <text>
-                    The final step consists of deconvolving the raw image
-                    with a matrix that accounts for the PSF at different
-                    spatial positions. This problem can be ill-posed and
-                    might require regularization to prevent over-fitting.
-                    The parameter <em>λ</em> controls the impact of this
-                    regularization. The reconstruction shows the 2D
-                    image as well as cuts through the center of the FOV
-                    along the <em>x</em> and <em>y</em> directions. 
-                </text>
+                <img src='data:image/png;base64,{{ data3 }}' width='300' height='250'/>
+                <img src='data:image/png;base64,{{ data2 }}' width='300' height='250'/>
             </div>
 
-            <img src='data:image/png;base64,{{ data9 }}' width='264' height='220'/>
-            <img src='data:image/png;base64,{{ data10 }}' width='264' height='220'/>
-            <img src='data:image/png;base64,{{ data8 }}' width='264' height='220'/>
+            <button id="next" onclick="showPhase(0, 1)">Next (Reconstruction)</button>
 
         </div>
 
-        <button onclick="showPhase(1, 0)">Previous</button>
-        <button id="next" onclick="showPhase(1, 2)">Next (References)</button>
-    </div>
+        <div id="phase2" class="phase" style="display: none;">
+            <h2>Reconstructed Image</h2>
+            <div id="slideContainer">
+                <img src='data:image/png;base64,{{ data6 }}' width='264' height='220'/>
+                <img src='data:image/png;base64,{{ data7 }}' width='264' height='220'/>
 
-    <div id="phase3" class="phase" style="display: none;">
-        <h2>References</h2>
-        <div id="slideContainer">
-            <div id="slideTextBox">
-                <ul>
-                    <li>
-                        Goodwill, Patrick W., and Steven M. Conolly. "The X-space formulation of the magnetic particle imaging process:
-                        1-D signal, resolution, bandwidth, SNR, SAR, and magnetostimulation." IEEE transactions on medical imaging 29.11
-                        (2010): 1851-1859, <a href="https://doi.org/10.1109/TMI.2010.2052284">https://doi.org/10.1109/TMI.2010.2052284</a>
-                    </li>
-                    
-                    <li>
-                        Knopp, Tobias, Nadine Gdaniec, and Martin Möddel. "Magnetic particle imaging: from proof of principle to preclinical
-                        applications." Physics in Medicine & Biology 62.14 (2017): R124, 
-                        <a href="https://doi.org/10.1088/1361-6560/aa6c99">https://doi.org/10.1088/1361-6560/aa6c99</a>
-                    </li>
-                    
-                    <li>
-                        Chandrasekharan, Prashant, et al. "Non-radioactive and sensitive tracking of neutrophils towards inflammation using
-                        antibody functionalized magnetic particle imaging tracers." Nanotheranostics 5.2 (2021): 240,
-                        <a href="https://doi.org/10.7150%2Fntno.50721">https://doi.org/10.7150%2Fntno.50721</a>
-                    </li>
-
-                    <li>
-                        Bui, Thinh Q., et al. "Harmonic dependence of thermal magnetic particle imaging." Scientific Reports 13.1 (2023):
-                        15762, <a href="https://doi.org/10.1038/s41598-023-42620-1">https://doi.org/10.1038/s41598-023-42620-1</a>
-                    </li>
-                    
-                    <li>
-                        Henn, Mark-Alexander, et al. "Improving model-based MPI image reconstructions: Baseline recovery, receive coil 
-                        sensitivity, relaxation and uncertainty estimation." International Journal on Magnetic Particle Imaging IJMPI 8.1
-                        (2022), <a href="https://doi.org/10.18416/IJMPI.2022.2208001">https://doi.org/10.18416/IJMPI.2022.2208001</a>
-                    </li>
-                    
-                    
-                    <li>
-                        …. and link to Thermal Magic website, 
-                        <a href="https://www.nist.gov/programs-projects/thermal-magic-si-traceable-method-3d-thermal-magnetic-imaging-and-control">
-                        Thermal MagIC: New NIST Project to Build Nano-Thermometers Could Revolutionize Temperature Imaging</a>
-                    </li>
-                    
-                </ul>
+                <div id="slideTextBox">
+                    <text>
+                        The first step in the reconstruction consists of correlating
+                        the time signal with the corresponding spatial position of
+                        the FFP by collecting all the data for which the FFP positions
+                        fall within a specific pixel's boundaries. The resulting image
+                        can be understood as a convolution of the point spread
+                        function (PSF) with the original particle distribution.
+                    </text>
+                </div>  
             </div>
+
+            <div id="slideContainer">
+                <div id="slideTextBox">
+                    <text>
+                        The final step consists of deconvolving the raw image
+                        with a matrix that accounts for the PSF at different
+                        spatial positions. This problem can be ill-posed and
+                        might require regularization to prevent over-fitting.
+                        The parameter <em>λ</em> controls the impact of this
+                        regularization. The reconstruction shows the 2D
+                        image as well as cuts through the center of the FOV
+                        along the <em>x</em> and <em>y</em> directions. 
+                    </text>
+                </div>
+
+                <img src='data:image/png;base64,{{ data9 }}' width='264' height='220'/>
+                <img src='data:image/png;base64,{{ data10 }}' width='264' height='220'/>
+                <img src='data:image/png;base64,{{ data8 }}' width='264' height='220'/>
+
+            </div>
+
+            <button onclick="showPhase(1, 0)">Previous</button>
+            <button id="next" onclick="showPhase(1, 2)">Next (References)</button>
         </div>
 
-        <button onclick="showPhase(2, 1)">Previous</button>
+        <div id="phase3" class="phase" style="display: none;">
+            <h2>References</h2>
+            <div id="slideContainer">
+                <div id="slideTextBox">
+                    <ul>
+                        <li>
+                            Goodwill, Patrick W., and Steven M. Conolly. "The X-space formulation of the magnetic particle imaging process:
+                            1-D signal, resolution, bandwidth, SNR, SAR, and magnetostimulation." IEEE transactions on medical imaging 29.11
+                            (2010): 1851-1859, <a href="https://doi.org/10.1109/TMI.2010.2052284">https://doi.org/10.1109/TMI.2010.2052284</a>
+                        </li>
+                        
+                        <li>
+                            Knopp, Tobias, Nadine Gdaniec, and Martin Möddel. "Magnetic particle imaging: from proof of principle to preclinical
+                            applications." Physics in Medicine & Biology 62.14 (2017): R124, 
+                            <a href="https://doi.org/10.1088/1361-6560/aa6c99">https://doi.org/10.1088/1361-6560/aa6c99</a>
+                        </li>
+                        
+                        <li>
+                            Chandrasekharan, Prashant, et al. "Non-radioactive and sensitive tracking of neutrophils towards inflammation using
+                            antibody functionalized magnetic particle imaging tracers." Nanotheranostics 5.2 (2021): 240,
+                            <a href="https://doi.org/10.7150%2Fntno.50721">https://doi.org/10.7150%2Fntno.50721</a>
+                        </li>
+
+                        <li>
+                            Bui, Thinh Q., et al. "Harmonic dependence of thermal magnetic particle imaging." Scientific Reports 13.1 (2023):
+                            15762, <a href="https://doi.org/10.1038/s41598-023-42620-1">https://doi.org/10.1038/s41598-023-42620-1</a>
+                        </li>
+                        
+                        <li>
+                            Henn, Mark-Alexander, et al. "Improving model-based MPI image reconstructions: Baseline recovery, receive coil 
+                            sensitivity, relaxation and uncertainty estimation." International Journal on Magnetic Particle Imaging IJMPI 8.1
+                            (2022), <a href="https://doi.org/10.18416/IJMPI.2022.2208001">https://doi.org/10.18416/IJMPI.2022.2208001</a>
+                        </li>
+                        
+                        
+                        <li>
+                            …. and link to Thermal Magic website, 
+                            <a href="https://www.nist.gov/programs-projects/thermal-magic-si-traceable-method-3d-thermal-magnetic-imaging-and-control">
+                            Thermal MagIC: New NIST Project to Build Nano-Thermometers Could Revolutionize Temperature Imaging</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <button onclick="showPhase(2, 1)">Previous</button>
+        </div>
     </div>
 
     <script>
         var phases = document.getElementsByClassName('phase');
             
         function showPhase(hideIndex, showIndex) {
-            phases[hideIndex].style.display = 'none';
-            phases[showIndex].style.display = 'block';
+            console.log('Hiding phase:', hideIndex, 'Showing phase:', showIndex);
+            phases[hideIndex + 3].style.display = 'none';
+            phases[showIndex + 3].style.display = 'block';
         }
     </script>
     

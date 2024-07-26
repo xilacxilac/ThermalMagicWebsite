@@ -171,6 +171,11 @@ input[type="number"] {
     background-color: #555;
 }
 
+.home-phase {
+    position: relative;
+    padding-bottom: 60px;
+}
+
 .phase {
     position: relative;
     padding-bottom: 60px;
